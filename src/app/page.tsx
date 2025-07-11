@@ -157,8 +157,48 @@ export default function HomePage() {
     }
   }, [selectedHead, selectedThing, customTexts]);
 
-  const handleDownload = () => console.log('Download clicked');
-  const handleCopy = () => console.log('Copy clicked');
+  const handleDownload = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    // Convert canvas to data URL
+    const dataUrl = canvas.toDataURL('image/png');
+    
+    // Create temporary download link
+    const link = document.createElement('a');
+    link.download = 'bonji-meme.png';
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleCopy = async () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    try {
+      // Convert canvas to blob
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ]);
+          alert('Image copied to clipboard!');
+        } catch (err) {
+          console.error('Failed to copy image:', err);
+          alert('Failed to copy image to clipboard');
+        }
+      }, 'image/png');
+    } catch (err) {
+      console.error('Error creating blob:', err);
+      alert('Error preparing image for copy');
+    }
+  };
   const handleReset = () => {
     setSelectedHead(null);
     setSelectedThing(null);
