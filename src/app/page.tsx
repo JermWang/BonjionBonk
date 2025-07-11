@@ -63,7 +63,7 @@ const CHARACTER_IMAGES = {
 
 export default function HomePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [activeTab, setActiveTab] = useState('heads'); // Default to heads tab
+  const [activeTab, setActiveTab] = useState('head'); // Default to heads tab
   const [selectedHead, setSelectedHead] = useState<string | null>(null);
   const [selectedThing, setSelectedThing] = useState<string | null>(null);
   const [customTexts, setCustomTexts] = useState<{ id: string; text: string; color: string; size: number; x: number; y: number }[]>([]);
