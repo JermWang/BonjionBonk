@@ -63,7 +63,7 @@ const CHARACTER_IMAGES = {
 
 export default function HomePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [activeTab, setActiveTab] = useState('Text');
+  const [activeTab, setActiveTab] = useState('heads'); // Default to heads tab
   const [selectedHead, setSelectedHead] = useState<string | null>(null);
   const [selectedThing, setSelectedThing] = useState<string | null>(null);
   const [customTexts, setCustomTexts] = useState<{ id: string; text: string; color: string; size: number; x: number; y: number }[]>([]);
@@ -399,7 +399,7 @@ export default function HomePage() {
               {[ 
                 { name: 'DexScreener', img: CHARACTER_IMAGES.social_icons.dexscreener, url: 'https://dexscreener.com/solana/7obrgho7ag4xjmzjqmt1isscbpvfd4y5feqa6jajv9vr' },
                 { name: 'LetsBonk.fun', img: CHARACTER_IMAGES.social_icons.pumpfun, url: 'https://pump.fun/coin/mYrgbk1b8MiN3Wc7QsjxrwvTzoXGJB1rTnEpaj2pump' },
-                { name: 'Twitter/X', img: CHARACTER_IMAGES.social_icons.twitter, url: 'https://x.com/i/communities/1929736862664397227' }
+                { name: 'Twitter/X', img: CHARACTER_IMAGES.social_icons.twitter, url: 'https://x.com/Bonjionbonk' }
               ].map(social => (
                 <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
                   <img src={social.img} alt={social.name} className="w-55 h-55 object-contain transition-shadow hover:shadow-md"/>

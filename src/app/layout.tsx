@@ -21,7 +21,10 @@ const fragmentMono = Fragment_Mono({
 
 export const metadata: Metadata = {
   title: "Bonji On Bonk",
-  description: "Bonji gang over everythang",
+  description: "Bonji gang over everythang.",
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: "Bonji",
     description: "Bonji gang over everythang.",
