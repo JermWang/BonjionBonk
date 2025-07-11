@@ -56,7 +56,7 @@ const CHARACTER_IMAGES = {
   ].sort(),
   social_icons: {
     dexscreener: 'https://framerusercontent.com/images/WjSUwEBPHt3JBBQIe9WMOVX1j8.png',
-    pumpfun: 'https://framerusercontent.com/images/CHA2Ye4cLLA14cL6M8FMPVi8d5Y.png',
+    pumpfun: '/images/characters/main/monkey-2.png',
     twitter: 'https://framerusercontent.com/images/HuLosWAGfhwxorVG5iGkfvAeWg.png',
   }
 }
@@ -410,7 +410,7 @@ export default function HomePage() {
             <div className="mt-6 text-center lg:text-left w-full">
               <p className="font-mono text-brand-charcoal text-2xl font-semibold">ca</p>
               <p className="font-mono text-gray-500 text-base break-all max-w-full">
-              mYrgbk1b8MiN3Wc7QsjxrwvTzoXGJB1rTnEpaj2pump
+                bonk contract coming soon
               </p>
             </div>
           </aside>
