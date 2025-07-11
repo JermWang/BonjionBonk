@@ -212,7 +212,7 @@ export default function HomePage() {
     ]);
   };
 
-  const updateTextItem = (id: string, field: keyof typeof customTexts[0], value: any) => {
+  const updateTextItem = (id: string, field: keyof typeof customTexts[0], value: string | number) => {
     setCustomTexts(prevTexts =>
       prevTexts.map(item =>
         item.id === id ? { ...item, [field]: field === 'size' || field === 'x' || field === 'y' ? Number(value) : value } : item
