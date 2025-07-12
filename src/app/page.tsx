@@ -397,21 +397,29 @@ export default function HomePage() {
             <p className="font-mono text-gray-400 text-xs text-center lg:text-left"> (yes u can click these little guys)</p>
             <div className="flex flex-row justify-center lg:justify-start gap-6 w-full">
               {[ 
-                { name: 'DexScreener', img: CHARACTER_IMAGES.social_icons.dexscreener, url: '' },
-                { name: 'LetsBonk.fun', img: CHARACTER_IMAGES.social_icons.pumpfun, url: '' },
+                { name: 'DexScreener', img: CHARACTER_IMAGES.social_icons.dexscreener, url: 'https://dexscreener.com/solana/j8lffwta4nphhwjwt9pttsfabbx1ryidkxp9qtqhpm5t' },
+                { name: 'LetsBonk.fun', img: CHARACTER_IMAGES.social_icons.pumpfun, url: 'https://letsbonk.fun/token/CZnfyqE8J6pNUWTA3Xrp252PXrsp2xdLQd6zifHnbonk' },
                 { name: 'Twitter/X', img: CHARACTER_IMAGES.social_icons.twitter, url: 'https://x.com/Bonjionbonk' }
               ].map(social => (
-                <a key={social.name} href={social.url || '#'} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
+                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
                   <img src={social.img} alt={social.name} className="w-55 h-55 object-contain transition-shadow hover:shadow-md"/>
                   {social.name}
                 </a>
               ))}
             </div>
-            <div className="mt-6 text-center lg:text-left w-full">
-              <p className="font-mono text-brand-charcoal text-2xl font-semibold">ca</p>
-              <p className="font-mono text-gray-500 text-base break-all max-w-full">
-                bonk contract coming soon
-              </p>
+
+            {/* Contract Address Display */}
+            <div className="mt-4 flex flex-col items-center gap-2">
+              <p className="text-sm text-gray-600">Contract Address:</p>
+              <div className="flex items-center gap-2">
+                <code className="text-sm bg-gray-100 px-2 py-1 rounded">CZnfyqE8J6pNUWTA3Xrp252PXrsp2xdLQd6zifHnbonk</code>
+                <button 
+                  onClick={() => navigator.clipboard.writeText('CZnfyqE8J6pNUWTA3Xrp252PXrsp2xdLQd6zifHnbonk')}
+                  className="text-sm bg-brand-blue text-white px-2 py-1 rounded hover:bg-blue-600 transition-colors"
+                >
+                  Copy
+                </button>
+              </div>
             </div>
           </aside>
 
