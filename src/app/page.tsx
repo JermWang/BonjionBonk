@@ -397,9 +397,11 @@ export default function HomePage() {
             <p className="font-mono text-gray-400 text-xs text-center lg:text-left"> (yes u can click these little guys)</p>
             <div className="flex flex-row justify-center lg:justify-start gap-6 w-full">
               {[ 
+                { name: 'DexScreener', img: CHARACTER_IMAGES.social_icons.dexscreener, url: '' },
+                { name: 'LetsBonk.fun', img: CHARACTER_IMAGES.social_icons.pumpfun, url: '' },
                 { name: 'Twitter/X', img: CHARACTER_IMAGES.social_icons.twitter, url: 'https://x.com/Bonjionbonk' }
               ].map(social => (
-                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
+                <a key={social.name} href={social.url || '#'} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
                   <img src={social.img} alt={social.name} className="w-55 h-55 object-contain transition-shadow hover:shadow-md"/>
                   {social.name}
                 </a>
