@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Bonji",
     images: [
       {
-        url: "/images/social-share.png",
+        url: "/images/bonji-CTO-banner.png",
         width: 1200,
         height: 630,
       },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bonji On Bonk",
     description: "Bonji gang over everythang.",
-    images: ["/images/social-share.png"],
+    images: ["/images/bonji-CTO-banner.png"],
   },
 };
 

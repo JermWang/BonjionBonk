@@ -397,8 +397,6 @@ export default function HomePage() {
             <p className="font-mono text-gray-400 text-xs text-center lg:text-left"> (yes u can click these little guys)</p>
             <div className="flex flex-row justify-center lg:justify-start gap-6 w-full">
               {[ 
-                { name: 'DexScreener', img: CHARACTER_IMAGES.social_icons.dexscreener, url: 'https://dexscreener.com/solana/7obrgho7ag4xjmzjqmt1isscbpvfd4y5feqa6jajv9vr' },
-                { name: 'LetsBonk.fun', img: CHARACTER_IMAGES.social_icons.pumpfun, url: 'https://pump.fun/coin/mYrgbk1b8MiN3Wc7QsjxrwvTzoXGJB1rTnEpaj2pump' },
                 { name: 'Twitter/X', img: CHARACTER_IMAGES.social_icons.twitter, url: 'https://x.com/Bonjionbonk' }
               ].map(social => (
                 <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 text-sm text-gray-600 hover:text-brand-blue transition-colors text-center">
