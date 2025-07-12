@@ -61,7 +61,8 @@ export default function ImageSelectorGrid({
   }
 
   return (
-    <div className={`grid ${gridCols} gap-3 p-1`}>
+    <div className="overflow-y-auto h-96">
+      <div className={`grid ${gridCols} gap-3 p-1`}>
       {imageUrls.map((url) => (
         <button
           key={url}
@@ -85,6 +86,7 @@ export default function ImageSelectorGrid({
           )}
         </button>
       ))}
+      </div>
     </div>
   );
 } 
