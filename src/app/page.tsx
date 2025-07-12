@@ -374,14 +374,14 @@ export default function HomePage() {
             )}
                 {activeTab === 'head' && (
                   <ImageSelectorGrid 
-                    imageUrls={CHARACTER_IMAGES.heads}
+                    folder="heads"
                     selectedImageUrl={selectedHead}
                     onImageSelect={(url) => setSelectedHead(url === selectedHead ? null : url)}
                   />
                 )}
                 {activeTab === 'thing' && (
                   <ImageSelectorGrid 
-                    imageUrls={CHARACTER_IMAGES.things}
+                    folder="things"
                     selectedImageUrl={selectedThing}
                     onImageSelect={(url) => setSelectedThing(url === selectedThing ? null : url)}
                   />

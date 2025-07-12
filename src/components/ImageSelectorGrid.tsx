@@ -1,26 +1,67 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface ImageSelectorGridProps {
-  imageUrls: string[];
+  folder: 'heads' | 'things' | 'main' | 'base';
   selectedImageUrl: string | null;
   onImageSelect: (url: string) => void;
-  gridCols?: string; // e.g., 'grid-cols-3' or 'grid-cols-4'
+  gridCols?: string;
 }
 
+const VALID_FOLDERS = ['heads', 'things', 'main', 'base'];
+
 export default function ImageSelectorGrid({
-  imageUrls,
+  folder,
   selectedImageUrl,
   onImageSelect,
-  gridCols = 'grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3' // Default responsive columns
+  gridCols = 'grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3'
 }: ImageSelectorGridProps) {
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Validate folder before making API call
+    if (!VALID_FOLDERS.includes(folder)) {
+      console.error(`Invalid folder: ${folder}. Must be one of: ${VALID_FOLDERS.join(', ')}`);
+      setImageUrls([]);
+      return;
+    }
+
+    const loadImages = async () => {
+      try {
+        console.log(`Fetching images for ${folder}...`);
+        const response = await fetch(`/api/assets?folder=${folder}`);
+        
+        if (!response.ok) {
+          const error = await response.text();
+          throw new Error(error);
+        }
+        
+        const files = await response.json();
+        console.log('API response:', files);
+        
+        const urls = files.map((file: string) => `/images/characters/${folder}/${file}`);
+        console.log('Generated URLs:', urls);
+        
+        setImageUrls(urls);
+      } catch (error) {
+        console.error(`Error loading images from ${folder}:`, error);
+        setImageUrls([]);
+      }
+    };
+
+    loadImages();
+    const interval = setInterval(loadImages, 5000);
+    return () => clearInterval(interval);
+  }, [folder]);
+
   if (!imageUrls || imageUrls.length === 0) {
     return <p className="text-sm text-gray-500 p-4 text-center">No items to display.</p>;
   }
 
   return (
-    <div className={`grid ${gridCols} gap-3 p-1`}> {/* Adjusted gap and padding */}
+    <div className={`grid ${gridCols} gap-3 p-1`}>
       {imageUrls.map((url) => (
         <button
           key={url}
@@ -36,15 +77,11 @@ export default function ImageSelectorGrid({
           <Image
             src={url}
             alt={url.split('/').pop()?.split('.')[0] || 'Selectable item'}
-            layout="fill"
-            objectFit="contain" // Contain will ensure the whole image is visible within the button's padded area
-            className="transition-transform duration-150 ease-in-out" 
+            fill
+            className="object-contain transition-transform duration-150 ease-in-out" 
           />
           {selectedImageUrl === url && (
-            <div className="absolute inset-0 ring-1 ring-inset ring-brand-blue/50 pointer-events-none">
-              {/* Optional: Checkmark icon for selected state if border isn't enough */}
-              {/* <svg className="absolute top-1 right-1 w-4 h-4 text-brand-blue" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg> */}
-            </div>
+            <div className="absolute inset-0 ring-1 ring-inset ring-brand-blue/50 pointer-events-none" />
           )}
         </button>
       ))}
