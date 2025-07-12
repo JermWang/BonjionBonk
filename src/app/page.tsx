@@ -230,9 +230,10 @@ export default function HomePage() {
       <div className="w-full flex-grow bg-white shadow-xl rounded-lg p-6 md:p-8 flex flex-col">
         {/* Top Bar within the white column */}
         <header className="w-full flex justify-between items-center mb-6 md:mb-10">
-          <h1 className="font-mono text-5xl md:text-6xl text-brand-charcoal font-semibold">
-          bonji
-        </h1>
+          <div className="flex items-center justify-center lg:justify-start gap-2">
+            <img src="/letsbonk.svg" alt="LetsBonk Logo" className="h-8 w-8" />
+            <h1 className="text-3xl font-bold text-brand-charcoal">Bonji</h1>
+          </div>
           {/* Color swatches can remain if desired, or be removed if not in target bonji.xyz look */}
         <div className="flex gap-2">
             <div className="w-6 h-6 rounded bg-[#E8C19E]"></div>
